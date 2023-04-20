@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, getDocs
+    getFirestore, collection, getDocs, addDoc
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -34,4 +34,40 @@ const firebaseConfig = {
     .catch(err => {
         console.log(err.message)
     })
+
+    // Addoing documents 
+    const addUser = document.querySelector('.user')
+    addUser.addEventListener ('submit', (e) => {
+        e.preventDefault()
+        list.textContent = `Level`;
+
+        addDoc(colRef, {
+            Person: addUser.name.value
+        })
+        .then(() => {
+            addUser.reset()
+        })
+    })
+
+    //-------------------------------------------------------//
+    // GAME FUNCTIONS//
+    let correctAnswer = Math.floor (Math.random() *100);
+console.log(correctAnswer)
+
+const input = document.querySelector('#number');
+const tall = document.querySelector('#feedback');
+
+input.addEventListener ('keydown', e=> {
+    const number = input.value * 1
+    if(number === correctAnswer){
+    tall.textContent = 'This is the correct number, Well done!'
+    }
+     else if(number > correctAnswer) {
+    tall.textContent ='The number you are looking for is lower'
+    }
+    else if(number < correctAnswer){
+    tall.textContent = 'The number you are looking for is higher'
+    }
+});
+
 
