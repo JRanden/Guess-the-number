@@ -1,0 +1,42 @@
+body {
+    background-color: #D9C0A3;
+}
+
+.field {
+    display: grid;
+    place-items: center;
+    color: #0554F2;
+}
+
+button {
+    background-color: #D9501E;
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+
+
+.highscore {
+    display: grid;
+    place-items: center;
+    color: #0554F2;
+}
+
+#highscorelist {
+    background-color: #D9501E;
+    color: white;
+    padding: 40px 10%;
+    border-radius: 20px;
+} 
+
+#highscorelist {
+    list-style: none;
+}
+
+.hidden{
+    display: none;
+}
