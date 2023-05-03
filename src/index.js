@@ -54,7 +54,7 @@ addUser.addEventListener ('submit', (e) => {
 
 
     let correctAnswer = Math.floor (Math.random() *100);
-    console.log(correctAnswer)
+
     
     let count = 0
     let score;
@@ -68,7 +68,7 @@ addUser.addEventListener ('submit', (e) => {
     
     
 
-
+//
 input.addEventListener ('keyup', e=> {
     if (e.key == "Enter") {
     const number = input.value * 1
@@ -139,3 +139,6 @@ function removeList (){
     })
 }
 
+function restartGame (){
+    stopTimer()
+}
