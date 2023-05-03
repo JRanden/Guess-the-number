@@ -17,9 +17,6 @@ button {
     cursor: pointer;
 }
 
-
-
-
 .highscore {
     display: grid;
     place-items: center;
@@ -29,7 +26,7 @@ button {
 #highscorelist {
     background-color: #D9501E;
     color: white;
-    padding: 40px 10%;
+    padding: 30px 8%;
     border-radius: 20px;
 } 
 
