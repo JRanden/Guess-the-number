@@ -35,7 +35,6 @@ onSnapshot(q,(snapshot) => {
    
     removeList()
     createList(highscores)
-    console.log(highscores)
 })
 
 //add documents tar verdien fra navn inputen og sender det inn også fjerner navne feltet og 
@@ -51,57 +50,53 @@ addUser.addEventListener ('submit', (e) => {
     nameField.classList.add("hidden")
 })
 
-
-
     let correctAnswer = Math.floor (Math.random() *100);
-
-    
     let count = 0
     let score;
-    
     const input = document.querySelector('#number');
     const tall = document.querySelector('#feedback');
     const gameField = document.querySelector('.game')
     const nameField = document.querySelector('.user')
     const scoreboard = document.querySelector('#highscorelist')
     const scoreboardlength = 10
-    
-    
 
 //
 input.addEventListener ('keyup', e=> {
     if (e.key == "Enter") {
     const number = input.value * 1
+
+    if (count == 0) {
+    startGame()
+    }
+
     if(number === correctAnswer){
     tall.textContent = 'This is the correct number, Well done!'
-    stopTimer()
     addScore()
     addDoc(colRef, {
         Person: addUser.name.value,
         Score: count
     })
+    endGame()
+    resetGame()
 
     }
      else if(number > correctAnswer) {
     tall.textContent ='The number you are looking for is lower'
-    startTimer()
     addScore()
     }
-    else if(number < correctAnswer){
+    else {
     tall.textContent = 'The number you are looking for is higher'
-    startTimer()
     addScore()
 }
-
-
+input.value = "";
 }
 });
 
-function counter() {
+    function counter() {
     count++;
-    
     console.log(count)
     }
+
     
     function addScore(){
         count +=10
@@ -115,7 +110,7 @@ function counter() {
     function stopTimer(){
         clearInterval(score)
     }
-counter()
+
 
 
 function  createList (par1) {
@@ -139,6 +134,18 @@ function removeList (){
     })
 }
 
-function restartGame (){
+function resetGame (){
+    correctAnswer = Math.floor (Math.random() *100);
+    count = 0
+    gameField.classList.add("hidden")
+    nameField.classList.remove("hidden")
+    nameField.value = "";
+}
+
+function startGame (){
+    startTimer()
+}
+
+function endGame () {
     stopTimer()
 }
